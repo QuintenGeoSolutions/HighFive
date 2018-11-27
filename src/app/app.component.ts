@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
+import {environment} from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ import {HttpClient} from '@angular/common/http';
 export class AppComponent {
 
   form: FormGroup;
-  GroepsbedrijfNaam='Cronos';
+  GroepsbedrijfNaam = 'Cronos';
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
     this.form = this.fb.group({
@@ -40,7 +41,7 @@ export class AppComponent {
 
   saveUser() {
     console.log(this.form.value);
-    this.http.post('http://localhost:5000',this.form.value).subscribe(res => {
+    this.http.post('http://' + environment.bffUrl + ':5000', this.form.value).subscribe(res => {
 
     });
     this.form.reset();

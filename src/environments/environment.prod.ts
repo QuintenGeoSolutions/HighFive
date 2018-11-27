@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  bffurl: 'high-five-user-register.herokuapp.com'
 };
