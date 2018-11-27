@@ -41,7 +41,7 @@ export class AppComponent {
 
   saveUser() {
     console.log(this.form.value);
-    this.http.post('http://' + environment.bffUrl + ':5000', this.form.value).subscribe(res => {
+    this.http.post('http://' + environment.bffUrl, this.form.value).subscribe(res => {
 
     });
     this.form.reset();
