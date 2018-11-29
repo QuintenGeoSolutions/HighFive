@@ -1,4 +1,16 @@
 <!--The content below is only a placeholder and can be replaced.-->
+<div *ngIf="succesContent" class="bg-dark text-white w-100 position-fixed border-bottom border-secondary" style="z-index: 10000">
+  <div class="px-5 pt-3">
+    {{succesContent}}
+  </div>
+</div>
+
+<div *ngIf="errorContent" class="bg-dark text-primary w-100 position-fixed border-bottom border-secondary" style="z-index: 10000">
+  <div class="px-5 pt-3">
+    {{errorContent}}
+  </div>
+</div>
+
 <nav class="navbar navbar-light bg-light border-bottom border-dark flex-grow-0">
   <div class="navbar-brand w-100 d-flex align-items-center ">
     <h1 class="ml-3 my-auto flex-grow-1">High Five</h1>
@@ -81,3 +93,5 @@
     toepasselijke wetgeving inzake de verwerking van persoonsgegevens.
   </div>
 </div>
+
+

@@ -12,13 +12,15 @@ export class AppComponent {
 
   form: FormGroup;
   GroepsbedrijfNaam = 'Cronos';
+  succesContent: string;
+  errorContent: string;
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
     this.form = this.fb.group({
       'LastName': ['', [Validators.required]],
       'FirstName': ['', [Validators.required]],
       'Email': ['', [Validators.required, Validators.email]],
-      'PhoneNumber': ['', [Validators.required]],
+      'PhoneNumber': [''],
       'UserType': ['', [Validators.required]],
       'UserTypeOther': ['', [this.hoedanigheidAndersValidator]],
       'Organisation': ['', [Validators.required]],
@@ -40,11 +42,22 @@ export class AppComponent {
   }
 
   saveUser() {
+    this.succesContent = null;
+    this.errorContent = null;
     console.log(this.form.value);
     this.http.post('https://' + environment.bffUrl, this.form.value).subscribe(res => {
-
+      this.succesContent = 'Succesvol geregistreed';
+      setTimeout(() => {
+        this.succesContent = null;
+      }, 3000);
+      this.form.reset();
+      this.form.get('UserType').setValue('');
+    }, error1 => {
+      this.errorContent = 'Registratie niet mogelijk';
+      setTimeout(() => {
+        this.errorContent = null;
+      }, 3000);
     });
-    this.form.reset();
-    this.form.get('UserType').setValue('');
+
   }
 }
